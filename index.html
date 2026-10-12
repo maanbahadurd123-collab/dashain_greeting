@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ne">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>शुभ विजयादशमी २०८३ · Happy Dashain</title>
+  <meta name="description" content="A little Dashain surprise, wrapped just for you.">
+  <meta name="theme-color" content="#0b2a6b">
+  <meta property="og:title" content="शुभ विजयादशमी २०८३ · Happy Dashain">
+  <meta property="og:description" content="तपाईंका लागि एउटा विशेष सन्देश छ!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+Devanagari:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="stage" data-state="intro">
+
+  <!-- Depth 0: procedural sky, clouds, light, far + mid kites -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <!-- Colour grade: vignette + legibility scrim (not a panel) -->
+  <div id="grade" aria-hidden="true"></div>
+
+  <!-- Depth 1: goddess (left) and greeting (right) share one composition -->
+  <div id="layout">
+    <figure id="deity" class="no-image">
+      <div class="art">
+        <img id="deityImg" alt="" decoding="async">
+        <svg id="deityFallback" viewBox="0 0 300 400" role="img" aria-label="Lotus mandala with the sacred syllable Om, shown until the Durga Mata image is added" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+    </figure>
+
+    <section id="greeting" aria-labelledby="gHead" data-inertable>
+      <h1 id="gHead" class="g-head rv" style="--i:0">शुभ विजयादशमी २०८३</h1>
+      <p id="gTo" class="g-en rv" style="--i:1">Happy Dashain!</p>
+      <span class="orn rv" style="--i:2" aria-hidden="true"></span>
+      <p class="g-ne rv" lang="ne" style="--i:3">दुर्गा भवानीले तपाईं र तपाईंको परिवारमा सुख, शान्ति, समृद्धि र सुस्वास्थ्य प्रदान गरून्। तपाईंका हरेक पाइला सफलतातर्फ अघि बढून्, हरेक सपना पूरा होऊन्, अनि जीवन सधैँ माया, खुसी र सकारात्मक ऊर्जाले भरिपूर्ण रहोस्।यो दशैँले टाढिएका मनहरूलाई नजिक ल्याओस्, सम्बन्धहरूमा अझ धेरै प्रेम भरियोस् र तपाईंको घरआँगनमा सधैँ हाँसो, उमङ्ग र आशिष् छाइरहोस्।माता दुर्गाको कृपा सधैँ तपाईंमाथि रहोस्। शुभ विजया दशमी! 🙏✨</p>
+      <p class="g-en2 rv" lang="en" style="--i:4">May Goddess Durga bless you and your family with happiness, peace, good health, and prosperity.</p>
+      <p class="g-close rv" lang="ne" style="--i:5">मङ्गलमय विजयादशमीको हार्दिक शुभकामना!</p>
+      <p id="gFrom" class="g-from rv" style="--i:6" hidden></p>
+      <div class="g-actions rv" style="--i:7">
+        <button id="shareBtn" class="btn-gold" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Share</span>
+        </button>
+        <button id="namesBtn2" class="btn-link" type="button" data-names-open>Edit names</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- The gift: the only contained object in the scene -->
+  <div id="gift" aria-hidden="true">
+    <div class="gift-float">
+      <div class="gift-shadow"></div>
+      <div class="gift-beam"></div>
+      <div class="gift-body"><i class="rib-v"></i><i class="rib-h"></i></div>
+      <div class="gift-glow"></div>
+      <div class="gift-lid">
+        <i class="rib-v"></i>
+        <div class="bow"><b class="loop l"></b><b class="loop r"></b><b class="knot"></b></div>
+        <b class="tail tl"></b><b class="tail tr"></b>
+      </div>
+    </div>
+  </div>
+
+  <!-- Depth 2: near kites + cloud bank in front of everything above -->
+  <canvas id="fg" aria-hidden="true"></canvas>
+
+  <!-- Scene one copy -->
+  <section id="intro" data-inertable>
+    <div class="i-copy">
+      <h2 class="i-title" lang="ne">तपाईंका लागि एउटा विशेष सन्देश छ!</h2>
+      <p id="iSub" class="i-sub">A little Dashain surprise awaits you.</p>
+    </div>
+    <div class="i-action">
+      <button id="openBtn" class="open-btn" type="button"><span lang="ne">Open</span></button>
+      <button id="namesBtn1" class="btn-link" type="button" data-names-open>Add names</button>
+    </div>
+  </section>
+
+  <!-- Small controls -->
+  <div id="sound" class="sound" data-inertable>
+    <input id="vol" type="range" min="0" max="1" step="0.05" aria-label="Volume">
+    <button id="soundBtn" type="button" aria-pressed="false" aria-label="Turn music on" title="Music">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M4 9.5v5h3.6L12 18.5v-13L7.6 9.5z" fill="currentColor"/>
+        <g class="waves" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15.2 9.2a4 4 0 0 1 0 5.6"/><path d="M17.8 6.8a7.4 7.4 0 0 1 0 10.4"/></g>
+        <path class="slash" d="M4 4l16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <button id="aboutBtn" class="about-btn" type="button" aria-haspopup="dialog" data-inertable>About This Website</button>
+
+  <!-- Names: small popover, no wizard -->
+  <form id="namesSheet" class="sheet" hidden autocomplete="off" aria-label="Names for the greeting">
+    <label><span>From</span><input id="fromIn" name="from" maxlength="24" placeholder="Your name"></label>
+    <label><span>To</span><input id="toIn" name="to" maxlength="24" placeholder="Their name"></label>
+    <div class="sheet-row"><button type="submit" class="btn-gold small">Save</button><button type="button" class="btn-link" id="namesCancel">Cancel</button></div>
+  </form>
+
+  <!-- Manual-copy fallback -->
+  <div id="copySheet" class="sheet" hidden role="dialog" aria-label="Copy link">
+    <label><span>Copy this link and send it</span><input id="copyIn" readonly></label>
+    <div class="sheet-row"><button type="button" class="btn-gold small" id="copyAgain">Copy</button><button type="button" class="btn-link" id="copyClose">Close</button></div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- About: an overlay above the live scene -->
+  <section id="about" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" aria-hidden="true">
+    <button id="aboutClose" class="about-close" type="button" aria-label="Close About">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div id="aboutPanel" class="about-panel">
+      <h2 id="aboutTitle">About This Little Creation</h2>
+      <span class="orn" aria-hidden="true"></span>
+      <div class="about-text">
+        <p>This little Dashain greeting website was created with love, curiosity.</p>
+        <p>Instead of sending the same old 'Happy Dashain' message, I wanted to create something a little different — a small digital experience that could make someone's day more special.</p>
+        <p>Built using HTML, CSS, and JavaScript, with a little help from AI tools along the way.</p>
+        <p>So yes, AI helped me build this. Don't judge me too quickly! 😅 I'm learning, experimenting, and trying to turn creative ideas into something real.</p>
+        <p>If this little greeting made you smile, share it with someone you care about.</p>
+        <p class="about-end">Wishing you and your family a very Happy Dashain 2083!</p>
+      </div>
+    </div>
+  </section>
+
+  <noscript><p class="noscript">शुभ विजयादशमी २०८३ — Happy Dashain! (Please enable JavaScript for the full experience.)</p></noscript>
+</main>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
